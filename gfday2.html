@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Wholeheart 💛</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFF3E7;
+    --card: #FFE3C7;
+    --card-light: #FFFBF5;
+    --rose: #E85C6B;
+    --rose-deep: #C63F4F;
+    --honey: #F5A947;
+    --plum: #4A1F2E;
+    --lavender: #C9A0DC;
+    --shadow: rgba(74,31,46,0.12);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(245,169,71,0.15), transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(201,160,220,0.15), transparent 40%),
+      var(--bg);
+    color: var(--plum);
+    font-family: 'Nunito', sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  h1,h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color: var(--rose-deep);
+    line-height:1.15;
+  }
+
+  .script{
+    font-family:'Caveat', cursive;
+  }
+
+  section{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding: 6vh 6vw;
+    text-align:center;
+  }
+
+  /* soft wave divider between sections */
+  .wave{
+    position:absolute;
+    left:0; right:0; bottom:-1px;
+    height:80px;
+    background: var(--bg);
+    clip-path: path('M0,40 C 240,90 480,0 720,30 C 960,60 1200,10 1440,40 L1440,100 L0,100 Z');
+  }
+  .wave.alt{ background: var(--card); }
+
+  /* ---------- HERO ---------- */
+  #hero{
+    background: linear-gradient(180deg, var(--bg) 0%, #FFEAD6 100%);
+  }
+
+  .floating-heart{
+    position:absolute;
+    font-size: 1.4rem;
+    opacity:0.55;
+    animation: drift 9s ease-in-out infinite;
+    pointer-events:none;
+    user-select:none;
+  }
+  @keyframes drift{
+    0%,100%{ transform: translateY(0) rotate(-4deg); }
+    50%{ transform: translateY(-26px) rotate(6deg); }
+  }
+
+  .eyebrow{
+    font-family:'Caveat', cursive;
+    font-size: 1.6rem;
+    color: var(--rose);
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-title{
+    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    margin-bottom: 1rem;
+  }
+  .hero-title em{ color: var(--honey); font-style: italic; }
+
+  .hero-sub{
+    max-width: 480px;
+    font-size: 1.15rem;
+    color: var(--plum);
+    opacity:0.85;
+    margin-bottom: 3rem;
+  }
+
+  /* hero stage holds the letter card */
+  .hero-stage{
+    position:relative;
+    width: 260px;
+    height: 170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .letter-card{
+    position:relative;
+    width:100%; height:100%;
+    cursor:pointer;
+    transition: width 0.6s cubic-bezier(.3,.8,.3,1.1), height 0.6s cubic-bezier(.3,.8,.3,1.1);
+  }
+  .letter-card.opened{
+    width: 320px;
+    height: 210px;
+  }
+
+  .letter-face{
+    position:absolute;
+    inset:0;
+    border-radius: 10px;
+    background: var(--card-light);
+    box-shadow: 0 18px 40px var(--shadow);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap: 14px;
+    padding: 1.2rem;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .letter-face-closed{
+    opacity: 1;
+    transform: scale(1);
+  }
+  .letter-card.opened .letter-face-closed{
+    opacity: 0;
+    transform: scale(0.85) rotate(-4deg);
+    pointer-events:none;
+  }
+
+  .letter-face-open{
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events:none;
+  }
+  .letter-card.opened .letter-face-open{
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.15s;
+    pointer-events:auto;
+  }
+
+  .letter-cover-lines{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    width: 70%;
+  }
+  .letter-cover-lines span{
+    display:block;
+    height: 6px;
+    border-radius: 4px;
+    background: var(--card);
+  }
+  .letter-cover-lines span:nth-child(2){ width: 85%; }
+  .letter-cover-lines span:nth-child(3){ width: 60%; }
+  .letter-cover-seal{
+    font-size: 1.8rem;
+    animation: seal-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes seal-pulse{
+    0%,100%{ transform: scale(1); }
+    50%{ transform: scale(1.12); }
+  }
+
+  .letter-message{
+    font-family:'Caveat', cursive;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: var(--rose-deep);
+    text-align:center;
+  }
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    color: var(--rose-deep);
+    opacity: 0.7;
+  }
+
+  /* ---------- REASONS ---------- */
+  #reasons{ background: var(--card); }
+  .section-title{ font-size: clamp(1.8rem,5vw,2.6rem); margin-bottom: .5rem; }
+  .section-note{ max-width:460px; opacity:.8; margin-bottom: 2.5rem; font-size: 1.02rem; }
+
+  .cards{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.4rem;
+    max-width: 780px;
+    width:100%;
+  }
+
+  .card{
+    height: 190px;
+    perspective: 1000px;
+    cursor:pointer;
+  }
+  .card-inner{
+    position:relative;
+    width:100%; height:100%;
+    transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
+    transform-style: preserve-3d;
+  }
+  .card.flipped .card-inner{ transform: rotateY(180deg); }
+  .card-face{
+    position:absolute; inset:0;
+    border-radius: 16px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    backface-visibility: hidden;
+    padding: 1rem;
+    box-shadow: 0 10px 26px var(--shadow);
+  }
+  .card-front{
+    background: var(--card-light);
+  }
+  .card-front .num{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 2.2rem;
+    color: var(--honey);
+  }
+  .card-front .tap{
+    font-size: 0.85rem;
+    color: var(--rose);
+    opacity:0.7;
+    margin-top:0.4rem;
+  }
+  .card-back{
+    background: var(--rose);
+    color: var(--card-light);
+    transform: rotateY(180deg);
+    font-family:'Caveat', cursive;
+    font-size: 1.35rem;
+    line-height:1.3;
+  }
+
+  /* ---------- JAR ---------- */
+  #jar{ background: linear-gradient(180deg, var(--bg), #FDE7D2); }
+  .jar-instructions{ max-width: 440px; margin-bottom: 1.5rem; opacity:.85; }
+
+  .jar-area{
+    position:relative;
+    width: min(90vw, 460px);
+    height: 340px;
+    margin-bottom: 1.5rem;
+  }
+
+  .jar-svg{ width:100%; height:100%; }
+
+  .jar-fill{
+    transition: transform 1s cubic-bezier(.3,.9,.4,1);
+    transform: translateY(100%);
+  }
+
+  .catcher-heart{
+    position:absolute;
+    font-size: 1.9rem;
+    cursor:pointer;
+    background:none; border:none;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+    animation: bob 3s ease-in-out infinite;
+    transition: transform 0.15s;
+  }
+  .catcher-heart:hover{ transform: scale(1.15); }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-14px); }
+  }
+
+  .jar-progress{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--rose-deep);
+  }
+
+  /* ---------- LETTER ---------- */
+  #letter{
+    background: var(--rose);
+    color: var(--card-light);
+  }
+  #letter .section-title{ color: var(--card-light); }
+  .letter-paper{
+    background: var(--card-light);
+    color: var(--plum);
+    max-width: 560px;
+    width:100%;
+    border-radius: 18px;
+    padding: 2.6rem 2.2rem;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    font-size: 1.15rem;
+    line-height:1.7;
+    opacity:0;
+    transform: translateY(30px) scale(0.97);
+    transition: all 0.9s cubic-bezier(.2,.8,.3,1.1);
+  }
+  .letter-paper.show{ opacity:1; transform: translateY(0) scale(1); }
+  .letter-sign{
+    font-family:'Caveat', cursive;
+    font-size: 2rem;
+    color: var(--rose);
+    margin-top: 1.2rem;
+    display:block;
+  }
+
+  .hug-btn{
+    margin-top: 2.2rem;
+    background: var(--honey);
+    color: var(--plum);
+    border:none;
+    font-family:'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 0.9rem 2rem;
+    border-radius: 999px;
+    cursor:pointer;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  .hug-btn:hover{ transform: translateY(-3px) scale(1.03); }
+  .hug-btn:focus-visible, .letter-card:focus-visible, .card:focus-visible, .catcher-heart:focus-visible{
+    outline: 3px solid var(--lavender);
+    outline-offset: 3px;
+  }
+
+  footer{
+    text-align:center;
+    padding: 2rem;
+    font-family:'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--rose-deep);
+    background: var(--bg);
+  }
+
+  .confetti-piece{
+    position:fixed;
+    top:-20px;
+    z-index: 999;
+    pointer-events:none;
+    border-radius: 2px;
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(360deg); opacity: 0.9; }
+  }
+</style>
+</head>
+<body>
+
+<section id="hero">
+  <div class="wave"></div>
+  <span class="floating-heart" style="top:12%; left:10%;">💛</span>
+  <span class="floating-heart" style="top:22%; left:82%; animation-delay:1.5s;">💕</span>
+  <span class="floating-heart" style="top:70%; left:15%; animation-delay:3s;">✨</span>
+  <span class="floating-heart" style="top:65%; left:78%; animation-delay:2s;">💛</span>
+  <span class="floating-heart" style="top:40%; left:5%; animation-delay:4s;">💗</span>
+
+  <div class="eyebrow">it's Girlfriend's Day, and I have something for you</div>
+  <h1 class="hero-title">Happy Girlfriend's Day,<br><em>Wholeheart</em>.</h1>
+  <p class="hero-sub">A little something made just for you, one tap at a time. Go on — open it.</p>
+
+  <div class="hero-stage" id="heroStage">
+    <div class="letter-card" id="letterCard" tabindex="0" role="button" aria-label="Open the letter">
+      <div class="letter-face letter-face-closed">
+        <div class="letter-cover-lines">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="letter-cover-seal">💛</div>
+      </div>
+      <div class="letter-face letter-face-open">
+        <p class="letter-message">As promised, one of my gifts to my<br>wonderful girlfriend and the best girl ever.</p>
+      </div>
+    </div>
+  </div>
+  <div class="hint" id="heroHint">tap the letter</div>
+</section>
+
+<section id="reasons">
+  <div class="wave alt"></div>
+  <div class="eyebrow">a few, out of many</div>
+  <h2 class="section-title">Reasons my heart picked you</h2>
+  <p class="section-note">Tap each card to flip it. (Sarthak — swap these lines out for your real memories and inside jokes, she'll love it even more.)</p>
+  <div class="cards" id="cardGrid">
+    <!-- cards injected by JS -->
+  </div>
+</section>
+
+<section id="jar">
+  <div class="wave"></div>
+  <div class="eyebrow">a small game, a big point</div>
+  <h2 class="section-title">Help me fill your heart</h2>
+  <p class="jar-instructions">Catch the little hearts floating around the jar. Once it's completely full, something's waiting for you.</p>
+
+  <div class="jar-area" id="jarArea">
+    <svg class="jar-svg" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="heartClip">
+          <path d="M150,300
+                   C 40,220 10,140 60,90
+                   C 95,55 140,65 150,105
+                   C 160,65 205,55 240,90
+                   C 290,140 260,220 150,300 Z"/>
+        </clipPath>
+      </defs>
+      <path d="M150,300
+               C 40,220 10,140 60,90
+               C 95,55 140,65 150,105
+               C 160,65 205,55 240,90
+               C 290,140 260,220 150,300 Z"
+            fill="var(--card-light)" stroke="var(--rose)" stroke-width="4"/>
+      <g clip-path="url(#heartClip)">
+        <rect class="jar-fill" id="jarFill" x="0" y="0" width="300" height="340" fill="url(#grad)"/>
+      </g>
+      <defs>
+        <linearGradient id="grad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#E85C6B"/>
+          <stop offset="100%" stop-color="#F5A947"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <div class="jar-progress" id="jarProgress">0% whole</div>
+</section>
+
+<section id="letter">
+  <div class="wave alt" style="background:var(--rose);"></div>
+  <div class="eyebrow" style="color:#FFE1C6;">the part I've been saving</div>
+  <h2 class="section-title">For you, Wholeheart</h2>
+  <div class="letter-paper" id="letterPaper">
+    <p>My Wholeheart,</p>
+    <br>
+    <p>
+      Happy Girlfriend's Day Baby. Today I dont't really about needing a reason to remind you
+      I'd tell you this on any ordinary week but I'm glad there's a day that
+      gives me the excuse to make a little site just to say it properly.
+    </p>
+    <br>
+    <p>
+      Thank you for the everything, your smile, our laugh together, being in my good and bad days and always caring for me when i needed. You didn't just find a place in my heart somehow,
+      you became the whole thing.
+    </p>
+    <span class="letter-sign">Forever your Sarthak 💛</span>
+  </div>
+  <button class="hug-btn" id="hugBtn">Send me a hug back 🤗</button>
+</section>
+
+<footer>made with a whole heart, for a Wholeheart 💛</footer>
+
+<script>
+  // ---------- Letter card open/close ----------
+  const letterCard = document.getElementById('letterCard');
+  const heroHint = document.getElementById('heroHint');
+
+  function toggleLetter(){
+    const isOpen = letterCard.classList.toggle('opened');
+    heroHint.textContent = isOpen ? 'tap to close' : 'tap the letter';
+  }
+
+  letterCard.addEventListener('click', toggleLetter);
+  letterCard.addEventListener('keydown', e => {
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleLetter(); }
+  });
+
+
+  // ---------- Reason cards ----------
+  const reasons = [
+    "Because you make my life worth living",
+    "Because you make ordinary days feel like a good plan.",
+    "Because you remember the little things I forget I said.",
+    "Because you have the cutest smile which makes my heart melt.",
+    "Because you make me want to be a better version of myself.",
+    "Because home just means 'wherever you are.'",
+    "Because you are the most prettiest and the most beautiful",
+    "Because you are everything I needed and I got"
+  ];
+  const cardGrid = document.getElementById('cardGrid');
+  reasons.forEach((text, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.tabIndex = 0;
+    card.setAttribute('role','button');
+    card.setAttribute('aria-label', 'Flip card ' + (i+1));
+    card.innerHTML = `
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="num">${String(i+1).padStart(2,'0')}</div>
+          <div class="tap">tap to flip</div>
+        </div>
+        <div class="card-face card-back">${text}</div>
+      </div>`;
+    const flip = () => card.classList.toggle('flipped');
+    card.addEventListener('click', flip);
+    card.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); flip(); }
+    });
+    cardGrid.appendChild(card);
+  });
+
+  // ---------- Heart jar game ----------
+  const jarArea = document.getElementById('jarArea');
+  const jarFill = document.getElementById('jarFill');
+  const jarProgress = document.getElementById('jarProgress');
+  const letterPaper = document.getElementById('letterPaper');
+  let percent = 0;
+  const step = 10;
+  const heartEmojis = ['💛','💕','✨','💗','💫'];
+  let jarFull = false;
+
+  function spawnHeart(){
+    if(jarFull) return;
+    const h = document.createElement('button');
+    h.className = 'catcher-heart';
+    h.textContent = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+    h.setAttribute('aria-label','Catch this heart');
+    const areaW = jarArea.clientWidth, areaH = jarArea.clientHeight;
+    h.style.left = (10 + Math.random()*(areaW-40)) + 'px';
+    h.style.top = (10 + Math.random()*(areaH-40)) + 'px';
+    h.style.animationDelay = (Math.random()*2) + 's';
+    h.addEventListener('click', () => {
+      h.remove();
+      addFill();
+    });
+    jarArea.appendChild(h);
+    setTimeout(() => { if(h.parentNode) h.remove(); }, 5000);
+  }
+
+  function addFill(){
+    percent = Math.min(100, percent + step);
+    jarFill.style.transform = `translateY(${100-percent}%)`;
+    jarProgress.textContent = percent + '% whole';
+    if(percent >= 100 && !jarFull){
+      jarFull = true;
+      jarProgress.textContent = '100% whole 💛';
+      launchConfetti();
+      setTimeout(() => {
+        letterPaper.classList.add('show');
+        document.getElementById('letter').scrollIntoView({behavior:'smooth'});
+      }, 700);
+    }
+  }
+
+  let spawnTimer = setInterval(spawnHeart, 1100);
+  spawnHeart();
+
+  // ---------- Confetti ----------
+  function launchConfetti(){
+    const colors = ['#E85C6B','#F5A947','#C9A0DC','#FFE1C6'];
+    for(let i=0;i<60;i++){
+      setTimeout(() => {
+        const p = document.createElement('div');
+        p.className = 'confetti-piece';
+        const size = 6 + Math.random()*6;
+        p.style.width = size + 'px';
+        p.style.height = size*1.6 + 'px';
+        p.style.left = Math.random()*100 + 'vw';
+        p.style.background = colors[Math.floor(Math.random()*colors.length)];
+        p.style.animation = `fall ${2.5+Math.random()*2}s linear forwards`;
+        p.style.transform = `rotate(${Math.random()*360}deg)`;
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 5000);
+      }, i * 30);
+    }
+  }
+
+  document.getElementById('hugBtn').addEventListener('click', launchConfetti);
+</script>
+</body>
+</html>
